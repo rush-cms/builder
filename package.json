@@ -6,7 +6,8 @@
   "license": "UNLICENSED",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "generate": "tsr generate",
+    "build": "tsr generate && tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview"
   },
@@ -26,6 +27,7 @@
   "devDependencies": {
     "@eslint/js": "^9.39.1",
     "@tailwindcss/vite": "^4.1.18",
+    "@tanstack/router-cli": "^1.141.5",
     "@tanstack/router-devtools": "^1.141.4",
     "@tanstack/router-plugin": "^1.141.5",
     "@types/node": "^24.10.1",
