@@ -18,8 +18,8 @@
 
 #### High-Value Blocks [P1]
 - [x] Pricing Cards
-- [/] Testimonials Grid
-- [ ] FAQ Accordion
+- [x] Testimonials Grid
+- [x] FAQ Accordion
 
 #### Interface Improvements [P2]
 - [ ] Sidebar Categories (Accordion)
