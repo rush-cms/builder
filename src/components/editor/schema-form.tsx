@@ -142,8 +142,26 @@ export function SchemaForm({ schema, data, onChange }: SchemaFormProps) {
                         </div>
                     )}
 
+                    {/* BOOLEAN INPUT */}
+                    {field.type === 'boolean' && (
+                        <div className="flex items-center justify-between rounded-lg border border-zinc-700 bg-zinc-800 p-3">
+                            <div className="space-y-0.5">
+                                <Label htmlFor={field.key} className="text-base text-zinc-100 cursor-pointer">
+                                    {field.label}
+                                </Label>
+                            </div>
+                            <input
+                                id={field.key}
+                                type="checkbox"
+                                checked={!!data[field.key]}
+                                onChange={(e) => handleChange(field.key, e.target.checked)}
+                                className="h-5 w-5 rounded border-zinc-600 bg-zinc-700 text-blue-600 focus:ring-blue-600 focus:ring-offset-zinc-900 cursor-pointer"
+                            />
+                        </div>
+                    )}
+
                     {/* Fallback for unhandled types */}
-                    {!['text', 'textarea', 'url', 'array', 'select'].includes(field.type) && (
+                    {!['text', 'textarea', 'url', 'array', 'select', 'boolean'].includes(field.type) && (
                         <div className="text-xs text-zinc-500 bg-zinc-800 p-2 rounded">
                             Field type &quot;{field.type}&quot; not yet supported
                         </div>
