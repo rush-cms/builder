@@ -52,6 +52,7 @@ export type BlockCategory =
 	| 'cta'
 	| 'content'
 	| 'footer'
+	| 'marketing'
 
 export type FieldType =
 	| 'text'

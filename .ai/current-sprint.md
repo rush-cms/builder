@@ -17,8 +17,8 @@
 - [x] SEO Meta Tags
 
 #### High-Value Blocks [P1]
-- [ ] Pricing Cards
-- [ ] Testimonials Grid
+- [x] Pricing Cards
+- [/] Testimonials Grid
 - [ ] FAQ Accordion
 
 #### Interface Improvements [P2]
