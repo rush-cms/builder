@@ -41,6 +41,9 @@ export interface FieldSchema {
 	label: string
 	placeholder?: string
 	required?: boolean
+	// For array types
+	items?: FieldSchema[]
+	itemLabel?: string // e.g., "Add Question"
 }
 
 export type BlockCategory =
@@ -64,3 +67,4 @@ export type FieldType =
 	| 'select'
 	| 'boolean'
 	| 'number'
+	| 'array'

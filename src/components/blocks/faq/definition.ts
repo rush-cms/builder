@@ -48,5 +48,26 @@ export const FaqAccordionDefinition: BlockDefinition = {
             label: 'Subtitle',
             placeholder: 'Enter subtitle...',
         },
+        {
+            key: 'items',
+            type: 'array',
+            label: 'FAQ Items',
+            itemLabel: 'Question',
+            items: [
+                {
+                    key: 'question',
+                    type: 'text',
+                    label: 'Question',
+                    placeholder: 'Enter question...',
+                    required: true,
+                },
+                {
+                    key: 'answer',
+                    type: 'textarea',
+                    label: 'Answer',
+                    placeholder: 'Enter answer...',
+                },
+            ],
+        },
     ],
 }

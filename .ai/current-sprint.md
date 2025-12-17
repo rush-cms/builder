@@ -15,8 +15,8 @@
 - [x] **Block Registry**: Create `src/lib/blocks/registry.ts` to auto-import definitions.
 
 #### Dynamic Engine [P1]
-- [ ] **Repeater Field**: Implement `type: 'array'` in `SchemaForm` for dynamic lists (FAQs, Features).
-- [ ] **Recursive Editing**: Allow editing nested objects within the Properties Panel.
+- [x] **Repeater Field**: Implement `type: 'array'` in `SchemaForm` for dynamic lists (FAQs, Features).
+- [x] **Recursive Editing**: Allow editing nested objects within the Properties Panel.
 
 #### Composition & Styling [P1]
 - [ ] **Block Wrapper**: Create `BlockWrapper` component to handle standard Padding (Top/Bottom) and Background.
