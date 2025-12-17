@@ -28,7 +28,6 @@ import {
 import type {
 	DragEndEvent,
 	DragStartEvent,
-	DragOverEvent,
 } from '@dnd-kit/core'
 import {
 	sortableKeyboardCoordinates,
@@ -37,6 +36,7 @@ import { useEditorStore } from '@/lib/store/editor'
 import { SidebarItem } from '@/components/editor/sidebar-item'
 import { CanvasDroppable } from '@/components/editor/canvas-droppable'
 import { cn } from '@/lib/utils'
+import { BLOCK_DEFINITIONS } from '@/lib/blocks/definitions'
 
 function EditorPage() {
 	const { projectId } = Route.useParams()
@@ -87,9 +87,10 @@ function EditorPage() {
 		const activeData = active.data.current
 
 		if (activeData?.type === 'sidebar-item') {
+			const def = BLOCK_DEFINITIONS[activeData.blockType]
 			setActiveDragItem({
 				type: activeData.blockType,
-				title: activeData.blockType, // Improve this later with proper lookup
+				title: def ? def.name : activeData.blockType,
 			})
 		} else if (activeData?.type === 'sortable-block') {
 			setActiveDragItem({
@@ -111,11 +112,17 @@ function EditorPage() {
 
 		// Case 1: Dragging from Sidebar to Canvas
 		if (activeData?.type === 'sidebar-item') {
-			if (over.data.current?.type === 'canvas' || over.data.current?.type === 'sortable-block') {
+			if (
+				over.data.current?.type === 'canvas' ||
+				over.data.current?.type === 'sortable-block'
+			) {
+				const def = BLOCK_DEFINITIONS[activeData.blockType]
+				if (!def) return
+
 				const newBlock = {
 					id: crypto.randomUUID(),
 					type: activeData.blockType,
-					data: {},
+					data: { ...def.defaultData },
 				}
 
 				// If dropped over a block, insert after it
@@ -160,10 +167,15 @@ function EditorPage() {
 					<h2 className="text-sm font-semibold text-zinc-400 uppercase tracking-wide">
 						Blocos
 					</h2>
+
 					<div className="flex flex-col gap-2">
-						<SidebarItem type="hero-centered" title="Hero Centered" />
-						<SidebarItem type="features-grid" title="Features Grid" />
-						<SidebarItem type="footer-simple" title="Footer Simple" />
+						{Object.values(BLOCK_DEFINITIONS).map((def) => (
+							<SidebarItem
+								key={def.type}
+								type={def.type}
+								title={def.name}
+							/>
+						))}
 					</div>
 				</aside>
 

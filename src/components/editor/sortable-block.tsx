@@ -3,13 +3,19 @@ import { CSS } from '@dnd-kit/utilities'
 import { cn } from '@/lib/utils'
 import type { BlockInstance } from '@/types'
 
+import { BlockRenderer } from '@/components/editor/block-renderer'
+
 interface SortableBlockProps {
     block: BlockInstance
     isSelected?: boolean
     onClick?: () => void
 }
 
-export function SortableBlock({ block, isSelected, onClick }: SortableBlockProps) {
+export function SortableBlock({
+    block,
+    isSelected,
+    onClick,
+}: SortableBlockProps) {
     const {
         attributes,
         listeners,
@@ -41,15 +47,18 @@ export function SortableBlock({ block, isSelected, onClick }: SortableBlockProps
                 onClick?.()
             }}
             className={cn(
-                'relative min-h-[100px] border-2 border-transparent hover:border-blue-500/50 transition-all',
-                isSelected && 'border-blue-500',
+                'relative group outline-none',
                 isDragging && 'opacity-50 z-50'
             )}
         >
-            <div className="p-8 text-center bg-zinc-100 rounded">
-                <p className="text-zinc-500 font-mono text-xs mb-2">{block.type}</p>
-                <h3 className="font-bold text-zinc-900">Block: {block.id.slice(0, 8)}</h3>
-            </div>
+            <div
+                className={cn(
+                    'absolute inset-0 border-2 border-transparent pointer-events-none transition-all z-10',
+                    isSelected && 'border-blue-500',
+                    !isSelected && 'group-hover:border-blue-500/50'
+                )}
+            />
+            <BlockRenderer block={block} />
         </div>
     )
 }

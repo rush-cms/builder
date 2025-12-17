@@ -26,6 +26,7 @@ export interface BlockDefinition {
 	thumbnail: string
 	schema: FieldSchema[]
 	defaultData: Record<string, unknown>
+	component: React.ComponentType<any>
 }
 
 export interface BlockInstance {
