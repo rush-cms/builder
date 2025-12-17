@@ -3,10 +3,10 @@
 ## Last Updated: 2024-12-17
 
 ## Current State
-- Working on: Phase 2 - Core Blocks
-- Last completed: Drag-and-drop implementation (Phase 1)
-- Next task: Create Block Definitions and Hero/Footer components
-- Current file: `src/components/editor/sidebar-item.tsx`
+- Working on: Phase 3 - Properties Panel
+- Last completed: Core Blocks (Hero, Features, Footer)
+- Next task: Implement dynamic Properties Panel based on schema
+- Current file: `src/components/editor/properties-panel.tsx`
 
 ---
 

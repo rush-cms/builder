@@ -37,6 +37,7 @@ import { SidebarItem } from '@/components/editor/sidebar-item'
 import { CanvasDroppable } from '@/components/editor/canvas-droppable'
 import { cn } from '@/lib/utils'
 import { BLOCK_DEFINITIONS } from '@/lib/blocks/definitions'
+import { PropertiesPanel } from '@/components/editor/properties-panel'
 
 function EditorPage() {
 	const { projectId } = Route.useParams()
@@ -76,7 +77,11 @@ function EditorPage() {
 	} | null>(null)
 
 	const sensors = useSensors(
-		useSensor(PointerSensor),
+		useSensor(PointerSensor, {
+			activationConstraint: {
+				distance: 5,
+			},
+		}),
 		useSensor(KeyboardSensor, {
 			coordinateGetter: sortableKeyboardCoordinates,
 		})
@@ -225,11 +230,9 @@ function EditorPage() {
 					<h2 className="text-sm font-semibold text-zinc-400 uppercase tracking-wide mb-4">
 						Propriedades
 					</h2>
-					{activeBlockId ? (
-						<p className="text-zinc-300 text-sm">Editando: {activeBlockId.slice(0, 8)}</p>
-					) : (
-						<p className="text-zinc-500 text-sm">Selecione um bloco para editar</p>
-					)}
+					<div className="flex-1 overflow-y-auto">
+						<PropertiesPanel selectedId={activeBlockId} />
+					</div>
 				</aside>
 
 				{/* Drag Overlay */}

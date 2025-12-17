@@ -26,10 +26,10 @@
 - [x] Visual feedback during drag
 
 #### First Blocks [P2]
-- [ ] Block definitions structure
-- [ ] hero-centered component
-- [ ] footer-simple component
-- [ ] Block renderer component
+- [x] Block definitions structure
+- [x] Hero Centered component
+- [x] Footer Simple component
+- [x] Block text renderer component
 
 #### Properties Panel [P2]
 - [ ] Dynamic form generation from schema
