@@ -41,6 +41,13 @@ import { PropertiesPanel } from '@/components/editor/properties-panel'
 import { SettingsPanel } from '@/components/editor/settings-panel'
 import { FontLoader } from '@/components/editor/font-loader'
 
+import {
+	Accordion,
+	AccordionContent,
+	AccordionItem,
+	AccordionTrigger,
+} from '@/components/ui/accordion'
+
 function EditorPage() {
 	const { projectId } = Route.useParams()
 	const { block: activeBlockId, panel, preview } = Route.useSearch()
@@ -175,15 +182,36 @@ function EditorPage() {
 						Blocos
 					</h2>
 
-					<div className="flex flex-col gap-2">
-						{Object.values(BLOCK_DEFINITIONS).map((def) => (
-							<SidebarItem
-								key={def.type}
-								type={def.type}
-								title={def.name}
-							/>
+					<Accordion
+						type="multiple"
+						className="w-full"
+						defaultValue={['hero', 'marketing', 'features', 'cta', 'social-proof', 'faq', 'content', 'footer']}
+					>
+						{/* Group blocks by category */}
+						{Object.entries(Object.values(BLOCK_DEFINITIONS).reduce((acc, def) => {
+							const category = def.category || 'other'
+							if (!acc[category]) acc[category] = []
+							acc[category].push(def)
+							return acc
+						}, {} as Record<string, typeof BLOCK_DEFINITIONS[string][]>)).map(([category, defs]) => (
+							<AccordionItem key={category} value={category}>
+								<AccordionTrigger className="capitalize text-zinc-400 hover:text-zinc-100">
+									{category.replace('-', ' ')}
+								</AccordionTrigger>
+								<AccordionContent>
+									<div className="flex flex-col gap-2 pt-1">
+										{defs.map((def) => (
+											<SidebarItem
+												key={def.type}
+												type={def.type}
+												title={def.name}
+											/>
+										))}
+									</div>
+								</AccordionContent>
+							</AccordionItem>
 						))}
-					</div>
+					</Accordion>
 				</aside>
 
 				{/* Main Content */}

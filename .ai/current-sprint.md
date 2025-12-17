@@ -22,8 +22,8 @@
 - [x] FAQ Accordion
 
 #### Interface Improvements [P2]
-- [ ] Sidebar Categories (Accordion)
-- [ ] Mobile Preview interaction
+- [x] Sidebar Categories (Accordion)
+- [x] Mobile Preview interaction
 
 ### Dependencies
 - Needs `ScrollArea` for longer sidebars
