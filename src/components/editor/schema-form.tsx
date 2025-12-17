@@ -4,7 +4,6 @@ import { Textarea } from '@/components/ui/textarea'
 import { Button } from '@/components/ui/button'
 import { Trash2, Plus, ChevronDown, ChevronRight } from 'lucide-react'
 import { useState } from 'react'
-import { cn } from '@/lib/utils'
 import type { FieldSchema } from '@/types'
 
 interface SchemaFormProps {

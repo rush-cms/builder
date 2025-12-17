@@ -3,7 +3,7 @@ import { FaqAccordion } from './faq-accordion'
 
 export const FaqAccordionDefinition: BlockDefinition = {
     type: 'faq-accordion',
-    category: 'faq',
+    category: 'marketing',
     name: 'FAQ Accordion',
     description: 'Expandable Q&A list',
     thumbnail: '/thumbnails/faq.png',

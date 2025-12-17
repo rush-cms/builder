@@ -3,7 +3,7 @@ import { HeroCentered } from './hero-centered'
 
 export const HeroCenteredDefinition: BlockDefinition = {
     type: 'hero-centered',
-    category: 'hero',
+    category: 'marketing',
     name: 'Hero Centered',
     description: 'Centered headline with subtitle and CTA',
     thumbnail: '/thumbnails/hero-centered.png',

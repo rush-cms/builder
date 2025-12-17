@@ -185,7 +185,7 @@ function EditorPage() {
 					<Accordion
 						type="multiple"
 						className="w-full"
-						defaultValue={['hero', 'marketing', 'features', 'cta', 'social-proof', 'faq', 'content', 'footer']}
+						defaultValue={['layout', 'marketing', 'commerce', 'media', 'misc']}
 					>
 						{/* Group blocks by category */}
 						{Object.entries(Object.values(BLOCK_DEFINITIONS).reduce((acc, def) => {

@@ -1,5 +1,4 @@
 import { Check } from 'lucide-react'
-import { cn } from '@/lib/utils'
 
 interface Plan {
     name: string
@@ -108,8 +107,8 @@ export function PricingCards({
                         </ul>
                         <button
                             className={`mt-8 w-full rounded-md px-3 py-2 text-center text-sm font-semibold leading-6 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 ${plan.highlighted
-                                    ? 'bg-white/10 text-white hover:bg-white/20'
-                                    : 'text-white hover:opacity-90'
+                                ? 'bg-white/10 text-white hover:bg-white/20'
+                                : 'text-white hover:opacity-90'
                                 }`}
                             style={!plan.highlighted ? { backgroundColor: 'var(--primary)' } : {}}
                         >

@@ -3,7 +3,7 @@ import { TestimonialsGrid } from './testimonials-grid'
 
 export const TestimonialsGridDefinition: BlockDefinition = {
     type: 'testimonials-grid',
-    category: 'social-proof',
+    category: 'marketing',
     name: 'Testimonials Grid',
     description: 'Grid of reviews',
     thumbnail: '/thumbnails/testimonials.png',

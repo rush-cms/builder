@@ -3,7 +3,7 @@ import { PricingCards } from './pricing-cards'
 
 export const PricingCardsDefinition: BlockDefinition = {
     type: 'pricing-cards',
-    category: 'marketing',
+    category: 'commerce',
     name: 'Pricing Cards',
     description: '3-column pricing table',
     thumbnail: '/thumbnails/pricing.png',

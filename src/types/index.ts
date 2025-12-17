@@ -49,15 +49,11 @@ export interface FieldSchema {
 }
 
 export type BlockCategory =
-	| 'hero'
-	| 'features'
-	| 'social-proof'
-	| 'pricing'
-	| 'faq'
-	| 'cta'
-	| 'content'
-	| 'footer'
+	| 'layout'
 	| 'marketing'
+	| 'media'
+	| 'commerce'
+	| 'misc'
 
 export type FieldType =
 	| 'text'

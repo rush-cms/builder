@@ -3,7 +3,7 @@ import { FeaturesGrid } from './features-grid'
 
 export const FeaturesGridDefinition: BlockDefinition = {
     type: 'features-grid',
-    category: 'features',
+    category: 'marketing',
     name: 'Features Grid',
     description: 'Grid of 3 features with icons',
     thumbnail: '/thumbnails/features-grid.png',
