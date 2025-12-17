@@ -99,11 +99,16 @@ export function PropertiesPanel({ selectedId }: PropertiesPanelProps) {
                             { label: 'Light Gray', value: 'bg-zinc-50' },
                             { label: 'Dark', value: 'bg-zinc-900 text-white' },
                             { label: 'Primary', value: 'bg-[var(--primary)] text-white' },
-                        ] : [
+                        ] : field.key === 'paddingTop' ? [
                             { label: 'None', value: 'pt-0' },
-                            { label: 'Small', value: 'py-12' },
-                            { label: 'Medium', value: 'py-20' },
-                            { label: 'Large', value: 'py-32' },
+                            { label: 'Small', value: 'pt-12' },
+                            { label: 'Medium', value: 'pt-20' },
+                            { label: 'Large', value: 'pt-32' },
+                        ] : [
+                            { label: 'None', value: 'pb-0' },
+                            { label: 'Small', value: 'pb-12' },
+                            { label: 'Medium', value: 'pb-20' },
+                            { label: 'Large', value: 'pb-32' },
                         ]
                     }))}
                     data={selectedBlock.data}

@@ -34,17 +34,27 @@ export const TestimonialsGridDefinition: BlockDefinition = {
     },
     schema: [
         {
-            key: 'title',
-            type: 'text',
-            label: 'Section Title',
-            placeholder: 'Enter title...',
-            required: true,
-        },
-        {
-            key: 'subtitle',
-            type: 'textarea',
-            label: 'Subtitle',
-            placeholder: 'Enter subtitle...',
+            key: 'testimonials',
+            type: 'array',
+            label: 'Testimonials',
+            itemLabel: 'Testimonial',
+            items: [
+                {
+                    key: 'content',
+                    type: 'textarea',
+                    label: 'Review Content',
+                },
+                {
+                    key: 'author',
+                    type: 'text',
+                    label: 'Author Name',
+                },
+                {
+                    key: 'role',
+                    type: 'text',
+                    label: 'Role / Company',
+                },
+            ],
         },
     ],
 }

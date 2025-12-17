@@ -31,17 +31,32 @@ export const FeaturesGridDefinition: BlockDefinition = {
     },
     schema: [
         {
-            key: 'title',
-            type: 'text',
-            label: 'Section Title',
-            placeholder: 'Enter title...',
-            required: true,
-        },
-        {
-            key: 'subtitle',
-            type: 'textarea',
-            label: 'Subtitle',
-            placeholder: 'Enter subtitle...',
+            key: 'features',
+            type: 'array',
+            label: 'Features List',
+            itemLabel: 'Feature',
+            items: [
+                {
+                    key: 'title',
+                    type: 'text',
+                    label: 'Title',
+                },
+                {
+                    key: 'description',
+                    type: 'textarea',
+                    label: 'Description',
+                },
+                {
+                    key: 'iconName',
+                    type: 'select',
+                    label: 'Icon',
+                    options: [
+                        { label: 'Zap', value: 'zap' },
+                        { label: 'Globe', value: 'globe' },
+                        { label: 'Bar Chart', value: 'barChart' },
+                    ],
+                },
+            ],
         },
     ],
 }

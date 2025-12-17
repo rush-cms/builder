@@ -11,14 +11,10 @@ interface Plan {
 }
 
 interface PricingCardsProps {
-    title?: string
-    subtitle?: string
     plans?: Plan[]
 }
 
 export function PricingCards({
-    title = 'Simple, Transparent Pricing',
-    subtitle = 'Choose the plan that best fits your needs. No hidden fees.',
     plans = [
         {
             name: 'Starter',
@@ -60,18 +56,7 @@ export function PricingCards({
     ],
 }: PricingCardsProps) {
     return (
-        <div>
-            <div className="text-center max-w-3xl mx-auto mb-16">
-                <h2 className="text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl mb-4">
-                    {title}
-                </h2>
-                {subtitle && (
-                    <p className="text-lg text-zinc-600">
-                        {subtitle}
-                    </p>
-                )}
-            </div>
-
+        <div className="w-full">
             <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
                 {plans.map((plan) => (
                     <div
@@ -97,13 +82,16 @@ export function PricingCards({
                             </span>
                         </p>
                         <ul role="list" className="mt-8 space-y-3 text-sm leading-6">
-                            {plan.features.map((feature: string) => (
-                                <li key={feature} className="flex gap-x-3">
-                                    <Check className={`h-6 w-5 flex-none ${plan.highlighted ? 'text-white' : 'text-[var(--primary)]'
-                                        }`} style={plan.highlighted ? {} : { color: 'var(--primary)' }} />
-                                    {feature}
-                                </li>
-                            ))}
+                            {(Array.isArray(plan.features) ? plan.features : []).map((feature: any) => {
+                                const featureText = typeof feature === 'string' ? feature : feature.text
+                                return (
+                                    <li key={featureText} className="flex gap-x-3">
+                                        <Check className={`h-6 w-5 flex-none ${plan.highlighted ? 'text-white' : 'text-[var(--primary)]'
+                                            }`} style={plan.highlighted ? {} : { color: 'var(--primary)' }} />
+                                        {featureText}
+                                    </li>
+                                )
+                            })}
                         </ul>
                         <button
                             className={`mt-8 w-full rounded-md px-3 py-2 text-center text-sm font-semibold leading-6 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 ${plan.highlighted

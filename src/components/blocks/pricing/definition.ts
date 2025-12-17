@@ -55,17 +55,67 @@ export const PricingCardsDefinition: BlockDefinition = {
     },
     schema: [
         {
-            key: 'title',
-            type: 'text',
-            label: 'Section Title',
-            placeholder: 'Enter title...',
-            required: true,
-        },
-        {
-            key: 'subtitle',
-            type: 'textarea',
-            label: 'Subtitle',
-            placeholder: 'Enter subtitle...',
+            key: 'plans',
+            type: 'array',
+            label: 'Pricing Plans',
+            itemLabel: 'Plan',
+            items: [
+                {
+                    key: 'name',
+                    type: 'text',
+                    label: 'Plan Name',
+                },
+                {
+                    key: 'price',
+                    type: 'text',
+                    label: 'Price',
+                },
+                {
+                    key: 'period',
+                    type: 'text',
+                    label: 'Billing Period',
+                    placeholder: '/mo',
+                },
+                {
+                    key: 'description',
+                    type: 'textarea',
+                    label: 'Description',
+                },
+                {
+                    key: 'ctaText',
+                    type: 'text',
+                    label: 'Button Text',
+                },
+                {
+                    key: 'highlighted',
+                    type: 'boolean',
+                    label: 'Highlight Plan',
+                },
+                {
+                    key: 'features',
+                    type: 'array',
+                    label: 'Features',
+                    itemLabel: 'Feature',
+                    items: [
+                        {
+                            key: 'text', // Simple array of strings not fully supported yet by recursive schema form cleanly without object wrapper, but schema form handles it as object. Adapting code to expect simple string might be complex. 
+                            // Actually, looking at SchemaForm implementation: 
+                            // const newItem = field.items?.reduce(...) => creates an object.
+                            // So 'features' in plan object will be an array of objects like { text: "..." }
+                            // BUT PricingCards expects string[]. 
+                            // I need to adjust PricingCards to handle object array OR simple string array, or adjust SchemaForm.
+                            // For MVP, let's keep it simple: WE WILL USE A TEXTAREA for features for now to avoid nested array complexity if easier, 
+                            // OR we assume SchemaForm generates objects and we map them.
+                            // Let's stick to the requested Repeater.
+                            // So `features` will be `[{ text: 'Feature 1' }, { text: 'Feature 2' }]`
+                            // I will update PricingCards component to map `f.text` if it is an object.
+                            type: 'text',
+                            label: 'Feature',
+                            required: true
+                        }
+                    ]
+                }
+            ],
         },
     ],
 }

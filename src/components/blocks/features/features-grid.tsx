@@ -13,14 +13,10 @@ interface Feature {
 }
 
 interface FeaturesGridProps {
-    title?: string
-    subtitle?: string
     features?: Feature[]
 }
 
 export function FeaturesGrid({
-    title = 'Powerful Features',
-    subtitle = 'Everything you need to build faster and scale further.',
     features = [
         {
             title: 'Lightning Fast',
@@ -40,18 +36,7 @@ export function FeaturesGrid({
     ],
 }: FeaturesGridProps) {
     return (
-        <div>
-            <div className="text-center max-w-3xl mx-auto mb-16">
-                <h2 className="text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl mb-4">
-                    {title}
-                </h2>
-                {subtitle && (
-                    <p className="text-lg text-zinc-600">
-                        {subtitle}
-                    </p>
-                )}
-            </div>
-
+        <div className="w-full">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                 {features.map((feature, index) => {
                     const Icon = ICONS[feature.iconName as keyof typeof ICONS] || Zap
