@@ -3,10 +3,10 @@
 ## Last Updated: 2024-12-17
 
 ## Current State
-- Working on: Phase 4 - Marketing Blocks & Global Settings
-- Last completed: Properties Panel & Netlify Deployment
-- Next task: Implement Global Settings Panel
-- Current file: `src/components/editor/settings-panel.tsx`
+- Working on: Phase 5 - Export & Persistence
+- Last completed: Sprint #2 (Marketing & Settings)
+- Next task: Implement Persistence (localStorage)
+- Current file: `src/lib/store/editor.ts`
 
 ---
 
