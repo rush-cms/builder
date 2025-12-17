@@ -1,7 +1,5 @@
 import { Zap, Globe, BarChart } from 'lucide-react'
 
-// Map of available icons for the schema
-// In a real app we'd need a better icon picker
 const ICONS: Record<string, React.ElementType> = {
     zap: Zap,
     globe: Globe,
@@ -57,7 +55,10 @@ export function FeaturesGrid({
                         const Icon = ICONS[feature.iconName] || Zap
                         return (
                             <div key={i} className="bg-white p-8 rounded-xl shadow-sm border border-zinc-100">
-                                <div className="w-12 h-12 bg-zinc-900 rounded-lg flex items-center justify-center mb-6">
+                                <div
+                                    className="w-12 h-12 rounded-lg flex items-center justify-center mb-6"
+                                    style={{ backgroundColor: 'var(--primary)' }}
+                                >
                                     <Icon className="w-6 h-6 text-white" />
                                 </div>
                                 <h3 className="text-xl font-bold text-zinc-900 mb-3">

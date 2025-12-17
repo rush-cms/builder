@@ -2,14 +2,14 @@ import { createFileRoute } from "@tanstack/react-router";
 
 type EditorSearch = {
 	block?: string;
-	panel: "library" | "properties";
+	panel: "library" | "properties" | "settings";
 	preview: "desktop" | "mobile";
 };
 
 export const Route = createFileRoute("/editor/$projectId")({
 	validateSearch: (search: Record<string, unknown>): EditorSearch => ({
 		block: search.block as string | undefined,
-		panel: (search.panel as "library" | "properties") ?? "library",
+		panel: (search.panel as "library" | "properties" | "settings") ?? "library",
 		preview: (search.preview as "desktop" | "mobile") ?? "desktop",
 	}),
 	component: EditorPage,
@@ -38,10 +38,12 @@ import { CanvasDroppable } from '@/components/editor/canvas-droppable'
 import { cn } from '@/lib/utils'
 import { BLOCK_DEFINITIONS } from '@/lib/blocks/definitions'
 import { PropertiesPanel } from '@/components/editor/properties-panel'
+import { SettingsPanel } from '@/components/editor/settings-panel'
+import { FontLoader } from '@/components/editor/font-loader'
 
 function EditorPage() {
 	const { projectId } = Route.useParams()
-	const { block: activeBlockId, preview } = Route.useSearch()
+	const { block: activeBlockId, panel, preview } = Route.useSearch()
 	const navigate = Route.useNavigate()
 
 	const {
@@ -215,7 +217,14 @@ function EditorPage() {
 					</header>
 
 					{/* Canvas Area */}
-					<div className="flex-1 p-8 overflow-auto bg-zinc-950/50">
+					<div
+						className="flex-1 p-8 overflow-auto bg-zinc-950/50"
+						style={{
+							'--primary': project.settings.primaryColor,
+							'--secondary': project.settings.secondaryColor,
+							'--font-main': project.settings.fontFamily,
+						} as React.CSSProperties}
+					>
 						<CanvasDroppable
 							blocks={project.blocks}
 							selectedBlockId={activeBlockId || null}
@@ -226,12 +235,39 @@ function EditorPage() {
 				</main>
 
 				{/* Properties Panel */}
-				<aside className="w-72 bg-zinc-900 border-l border-zinc-800 p-4 overflow-y-auto">
-					<h2 className="text-sm font-semibold text-zinc-400 uppercase tracking-wide mb-4">
-						Propriedades
-					</h2>
+				{/* Properties / Settings Panel */}
+				<aside className="w-72 bg-zinc-900 border-l border-zinc-800 flex flex-col overflow-hidden">
+					<div className="flex border-b border-zinc-800">
+						<button
+							onClick={() => navigate({ search: (prev) => ({ ...prev, panel: 'properties' }) })}
+							className={cn(
+								'flex-1 py-3 text-sm font-medium transition-colors border-b-2',
+								panel === 'properties'
+									? 'border-blue-500 text-zinc-100'
+									: 'border-transparent text-zinc-400 hover:text-zinc-200'
+							)}
+						>
+							Properties
+						</button>
+						<button
+							onClick={() => navigate({ search: (prev) => ({ ...prev, panel: 'settings' }) })}
+							className={cn(
+								'flex-1 py-3 text-sm font-medium transition-colors border-b-2',
+								panel === 'settings'
+									? 'border-blue-500 text-zinc-100'
+									: 'border-transparent text-zinc-400 hover:text-zinc-200'
+							)}
+						>
+							Settings
+						</button>
+					</div>
+
 					<div className="flex-1 overflow-y-auto">
-						<PropertiesPanel selectedId={activeBlockId} />
+						{panel === 'properties' ? (
+							<PropertiesPanel selectedId={activeBlockId} />
+						) : (
+							<SettingsPanel />
+						)}
 					</div>
 				</aside>
 
@@ -245,6 +281,8 @@ function EditorPage() {
 						</div>
 					) : null}
 				</DragOverlay>
+
+				<FontLoader fontFamily={project.settings.fontFamily} />
 			</div>
 		</DndContext>
 	)

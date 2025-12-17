@@ -1,54 +1,43 @@
 # Current Sprint
 
-## Sprint #1 - Foundation
+## Sprint #2 - Marketing & Customization
 
 **Started**: 2024-12-17
-**Estimated**: 8 hours
+**Estimated**: 6 hours
 **Status**: IN_PROGRESS
 **Priority**: High
 **Branch**: main
 
 ### Tasks
 
-#### Setup [P1]
-- [x] Vite + React + TypeScript setup
-- [x] TanStack Router configured
-- [x] Zustand store created
-- [x] Tailwind CSS v4 configured
-- [x] Project structure created
-- [x] TypeScript interfaces defined
-- [x] Initial commit
+#### Global Settings [P1]
+- [x] Settings Panel UI
+- [x] Color Picker (Primary/Secondary)
+- [x] Font Family Selector
+- [ ] SEO Meta Tags
 
-#### Drag-and-Drop [P1]
-- [x] @dnd-kit integration in sidebar
-- [x] Droppable canvas area
-- [x] Sortable blocks in canvas
-- [x] Visual feedback during drag
+#### High-Value Blocks [P1]
+- [ ] Pricing Cards
+- [ ] Testimonials Grid
+- [ ] FAQ Accordion
 
-#### First Blocks [P2]
-- [x] Block definitions structure
-- [x] Hero Centered component
-- [x] Footer Simple component
-- [x] Block text renderer component
-
-#### Properties Panel [P2]
-- [ ] Dynamic form generation from schema
-- [ ] Text input field
-- [ ] Image URL field
-- [ ] Color picker field
+#### Interface Improvements [P2]
+- [ ] Sidebar Categories (Accordion)
+- [ ] Mobile Preview interaction
 
 ### Dependencies
-- Drag-and-drop must work before adding real blocks
-- Block definitions needed before properties panel
+- Needs `ScrollArea` for longer sidebars
+- Needs `Accordion` for categories
 
 ---
 
-**Ended**: -
-**Actual**: -
+## Past Sprints
 
-### Sprint Metrics
-- **Velocity**: 7/15 tasks
-- **Time Accuracy**: -
-- **Blockers**: 0
-
-**Notes**: Foundation sprint focused on getting core infrastructure working before adding blocks.
+### Sprint #1 - Foundation
+**Status**: COMPLETED
+**Completed**: 2024-12-17
+- Setup (Vite, Router, Zustand, Tailwind)
+- Drag & Drop System
+- Core Blocks (Hero, Features, Footer)
+- Properties Panel & Schema Form
+- Netlify Deployment
