@@ -42,58 +42,53 @@ export function FaqAccordion({
     const [openIndex, setOpenIndex] = useState<number | null>(0)
 
     return (
-        <section className="py-24 px-4 bg-zinc-50">
-            <div className="max-w-3xl mx-auto">
-                <div className="text-center mb-16">
-                    <h2 className="text-3xl font-bold tracking-tight text-zinc-900 mb-4">
-                        {title}
-                    </h2>
+        <div className="w-full max-w-3xl mx-auto">
+            <div className="text-center mb-16">
+                <h2 className="text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl mb-4">
+                    {title}
+                </h2>
+                {subtitle && (
                     <p className="text-lg text-zinc-600">
                         {subtitle}
                     </p>
-                </div>
+                )}
+            </div>
 
-                <div className="space-y-4">
-                    {items.map((item, i) => {
-                        const isOpen = openIndex === i
-                        return (
-                            <div
-                                key={i}
-                                className="bg-white border border-zinc-200 rounded-lg overflow-hidden transition-all hover:border-zinc-300"
+            <div className="mt-12 divide-y divide-zinc-200">
+                {items.map((item, index) => {
+                    const isOpen = index === openIndex
+                    return (
+                        <div key={index} className="py-6">
+                            <button
+                                className="flex justify-between items-center w-full text-left font-semibold text-lg text-zinc-900 focus:outline-none"
+                                onClick={() => setOpenIndex(isOpen ? null : index)}
                             >
-                                <button
-                                    onClick={() => setOpenIndex(isOpen ? null : i)}
-                                    className="w-full flex items-center justify-between p-6 text-left focus:outline-none"
-                                >
-                                    <span className="font-semibold text-zinc-900 text-lg">
-                                        {item.question}
-                                    </span>
-                                    <span
-                                        className={cn(
-                                            "ml-6 shrink-0 transition-transform duration-200 text-zinc-400",
-                                            isOpen && "rotate-180"
-                                        )}
-                                        style={isOpen ? { color: 'var(--primary)' } : {}}
-                                    >
-                                        <ChevronDown className="w-5 h-5" />
-                                    </span>
-                                </button>
-
-                                <div
+                                {item.question}
+                                <span
                                     className={cn(
-                                        "overflow-hidden transition-all duration-300 ease-in-out",
-                                        isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+                                        "ml-6 shrink-0 transition-transform duration-200 text-zinc-400",
+                                        isOpen && "rotate-180"
                                     )}
+                                    style={isOpen ? { color: 'var(--primary)' } : {}}
                                 >
-                                    <div className="p-6 pt-0 text-zinc-600 leading-relaxed border-t border-transparent">
-                                        {item.answer}
-                                    </div>
+                                    <ChevronDown className="w-5 h-5" />
+                                </span>
+                            </button>
+
+                            <div
+                                className={cn(
+                                    "overflow-hidden transition-all duration-300 ease-in-out",
+                                    isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+                                )}
+                            >
+                                <div className="p-6 pt-0 text-zinc-600 leading-relaxed border-t border-transparent mt-4">
+                                    {item.answer}
                                 </div>
                             </div>
-                        )
-                    })}
-                </div>
+                        </div>
+                    )
+                })}
             </div>
-        </section>
+        </div>
     )
 }

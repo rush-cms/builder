@@ -1,4 +1,5 @@
 import { BLOCK_DEFINITIONS } from '@/lib/blocks/definitions'
+import { BlockWrapper } from '@/components/editor/block-wrapper'
 import type { BlockInstance } from '@/types'
 
 interface BlockRendererProps {
@@ -17,5 +18,18 @@ export function BlockRenderer({ block }: BlockRendererProps) {
     }
 
     const Component = definition.component
-    return <Component {...block.data} />
+
+    // Extract padding settings from block data (or default)
+    const { paddingTop, paddingBottom, backgroundColor, ...blockProps } = block.data || {}
+
+    return (
+        <BlockWrapper
+            paddingTop={paddingTop as string}
+            paddingBottom={paddingBottom as string}
+            className={backgroundColor as string}
+        >
+            <Component {...blockProps} />
+        </BlockWrapper>
+    )
 }
+

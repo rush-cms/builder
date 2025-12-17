@@ -44,6 +44,8 @@ export interface FieldSchema {
 	// For array types
 	items?: FieldSchema[]
 	itemLabel?: string // e.g., "Add Question"
+	// For select types
+	options?: { label: string; value: string }[]
 }
 
 export type BlockCategory =

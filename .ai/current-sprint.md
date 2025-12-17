@@ -19,8 +19,8 @@
 - [x] **Recursive Editing**: Allow editing nested objects within the Properties Panel.
 
 #### Composition & Styling [P1]
-- [ ] **Block Wrapper**: Create `BlockWrapper` component to handle standard Padding (Top/Bottom) and Background.
-- [ ] **Global Padding Controls**: Add padding sliders to the bottom of the Properties Panel for every block.
+- [x] **Block Wrapper**: Create `BlockWrapper` component to handle standard Layout (Padding/Margins).
+- [x] **Global Padding Controls**: Add padding sliders to the bottom of the Properties Panel for every block.
 - [ ] **Atomic Refactor**: Remove `<h2>Title</h2>` and `p` descriptions from existing blocks (Hero, Features, Pricing, etc.).
 - [ ] **New Block**: `SectionHeader` (Title + Subtitle + Alignment) for composition.
 

@@ -8,16 +8,15 @@ export function FooterSimple({
     copyright = '© 2024 All rights reserved.',
 }: FooterSimpleProps) {
     return (
-        <footer className="py-12 px-4 bg-zinc-50 border-t border-zinc-200">
-            <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
-                <div
-                    className="font-bold text-xl"
-                    style={{ color: 'var(--primary)', fontFamily: 'var(--font-main)' }}
-                >
+        <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+            <div className="flex items-center gap-2">
+                <span className="font-bold text-xl" style={{ color: 'var(--primary)', fontFamily: 'var(--font-main)' }}>
                     {companyName}
-                </div>
-                <p className="text-zinc-500 text-sm">{copyright}</p>
+                </span>
             </div>
-        </footer>
+            <div className="text-sm text-zinc-500">
+                {copyright}
+            </div>
+        </div>
     )
 }

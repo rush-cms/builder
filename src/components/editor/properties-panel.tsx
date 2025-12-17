@@ -62,6 +62,54 @@ export function PropertiesPanel({ selectedId }: PropertiesPanelProps) {
                 data={selectedBlock.data}
                 onChange={(newData) => updateBlock(selectedId, newData)}
             />
+
+            <div className="pt-6 border-t border-zinc-800">
+                <h4 className="text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-4">
+                    Layout & Spacing
+                </h4>
+                <SchemaForm
+                    schema={[
+                        {
+                            key: 'paddingTop',
+                            type: 'select',
+                            label: 'Padding Top',
+                            // We can add options support to SchemaForm later, using select type
+                            // For now let's use text or just assume we'll implement select
+                        },
+                        {
+                            key: 'paddingBottom',
+                            type: 'select',
+                            label: 'Padding Bottom',
+                        },
+                        {
+                            key: 'backgroundColor',
+                            type: 'select',
+                            label: 'Background',
+                        },
+                    ].map(field => ({
+                        // Temporary patch: inject options into schema if we supported select 
+                        // Since we don't have select support in SchemaForm fully yet (it falls back to unsupported), 
+                        // let's use 'text' for now or quickly add 'select' support.
+                        // Actually, I should add 'select' support to SchemaForm.
+                        ...field,
+                        type: 'select',
+                        // @ts-ignore - we need to extend FieldSchema types for options
+                        options: field.key === 'backgroundColor' ? [
+                            { label: 'White', value: 'bg-white' },
+                            { label: 'Light Gray', value: 'bg-zinc-50' },
+                            { label: 'Dark', value: 'bg-zinc-900 text-white' },
+                            { label: 'Primary', value: 'bg-[var(--primary)] text-white' },
+                        ] : [
+                            { label: 'None', value: 'pt-0' },
+                            { label: 'Small', value: 'py-12' },
+                            { label: 'Medium', value: 'py-20' },
+                            { label: 'Large', value: 'py-32' },
+                        ]
+                    }))}
+                    data={selectedBlock.data}
+                    onChange={(newData) => updateBlock(selectedId, { ...selectedBlock.data, ...newData })}
+                />
+            </div>
         </div>
     )
 }

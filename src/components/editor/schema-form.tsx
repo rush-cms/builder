@@ -123,8 +123,28 @@ export function SchemaForm({ schema, data, onChange }: SchemaFormProps) {
                         </div>
                     )}
 
+                    {/* SELECT (Native for MVP) */}
+                    {field.type === 'select' && field.options && (
+                        <div className="relative">
+                            <select
+                                id={field.key}
+                                value={data[field.key] || ''}
+                                onChange={(e) => handleChange(field.key, e.target.value)}
+                                className="flex h-10 w-full rounded-md border border-zinc-700 bg-zinc-800 px-3 py-2 text-sm ring-offset-background placeholder:text-zinc-500 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 text-zinc-100 appearance-none"
+                            >
+                                <option value="" disabled>Select an option</option>
+                                {field.options.map((opt) => (
+                                    <option key={opt.value} value={opt.value}>
+                                        {opt.label}
+                                    </option>
+                                ))}
+                            </select>
+                            <ChevronDown className="absolute right-3 top-3 h-4 w-4 opacity-50 pointer-events-none" />
+                        </div>
+                    )}
+
                     {/* Fallback for unhandled types */}
-                    {!['text', 'textarea', 'url', 'array'].includes(field.type) && (
+                    {!['text', 'textarea', 'url', 'array', 'select'].includes(field.type) && (
                         <div className="text-xs text-zinc-500 bg-zinc-800 p-2 rounded">
                             Field type &quot;{field.type}&quot; not yet supported
                         </div>

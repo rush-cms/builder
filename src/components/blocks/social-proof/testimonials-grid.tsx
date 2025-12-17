@@ -38,46 +38,44 @@ export function TestimonialsGrid({
     ],
 }: TestimonialsGridProps) {
     return (
-        <section className="py-24 px-4 bg-white">
-            <div className="max-w-7xl mx-auto">
-                <div className="text-center max-w-2xl mx-auto mb-16">
-                    <h2 className="text-3xl font-bold tracking-tight text-zinc-900 mb-4">
-                        {title}
-                    </h2>
-                    <p className="text-lg text-zinc-600">{subtitle}</p>
-                </div>
+        <div>
+            <div className="text-center max-w-3xl mx-auto mb-16">
+                <h2 className="text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl mb-4">
+                    {title}
+                </h2>
+                {subtitle && (
+                    <p className="text-lg text-zinc-600">
+                        {subtitle}
+                    </p>
+                )}
+            </div>
 
-                <div className="grid md:grid-cols-3 gap-8">
-                    {testimonials.map((testimonial, i) => (
-                        <div
-                            key={i}
-                            className="bg-zinc-50 p-8 rounded-2xl border border-zinc-100 flex flex-col items-start"
-                        >
-                            <div className="flex gap-1 mb-6 text-yellow-500">
-                                {[...Array(5)].map((_, i) => (
-                                    <Star key={i} className="w-4 h-4 fill-current" />
-                                ))}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                {testimonials.map((testimonial, index) => (
+                    <div key={index} className="bg-white p-8 rounded-2xl shadow-sm border border-zinc-100 flex flex-col">
+                        <div className="flex gap-1 mb-6 text-[var(--primary)]" style={{ color: 'var(--primary)' }}>
+                            {[...Array(5)].map((_, i) => (
+                                <Star key={i} className="h-4 w-4 fill-current" />
+                            ))}
+                        </div>
+                        <p className="text-zinc-600 mb-6 flex-1 leading-relaxed">
+                            "{testimonial.content}"
+                        </p>
+                        <div className="flex items-center gap-4 mt-auto">
+                            <div
+                                className="h-10 w-10 rounded-full flex items-center justify-center text-white font-bold text-sm"
+                                style={{ backgroundColor: 'var(--primary)' }}
+                            >
+                                {testimonial.author.charAt(0)}
                             </div>
-
-                            <p className="text-lg text-zinc-700 mb-8 leading-relaxed">
-                                "{testimonial.content}"
-                            </p>
-
-                            <div className="mt-auto flex items-center gap-4">
-                                <div className="w-10 h-10 rounded-full bg-zinc-200 flex items-center justify-center font-bold text-zinc-500" style={{ backgroundColor: 'var(--primary)', color: 'white', opacity: 0.8 }}>
-                                    {testimonial.author[0]}
-                                </div>
-                                <div>
-                                    <div className="font-semibold text-zinc-900">
-                                        {testimonial.author}
-                                    </div>
-                                    <div className="text-sm text-zinc-500">{testimonial.role}</div>
-                                </div>
+                            <div>
+                                <div className="font-semibold text-zinc-900">{testimonial.author}</div>
+                                <div className="text-sm text-zinc-500">{testimonial.role}</div>
                             </div>
                         </div>
-                    ))}
-                </div>
+                    </div>
+                ))}
             </div>
-        </section>
+        </div>
     )
 }
