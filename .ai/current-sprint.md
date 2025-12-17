@@ -20,10 +20,10 @@
 - [x] Initial commit
 
 #### Drag-and-Drop [P1]
-- [ ] @dnd-kit integration in sidebar
-- [ ] Droppable canvas area
-- [ ] Sortable blocks in canvas
-- [ ] Visual feedback during drag
+- [x] @dnd-kit integration in sidebar
+- [x] Droppable canvas area
+- [x] Sortable blocks in canvas
+- [x] Visual feedback during drag
 
 #### First Blocks [P2]
 - [ ] Block definitions structure

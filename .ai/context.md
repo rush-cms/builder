@@ -3,10 +3,10 @@
 ## Last Updated: 2024-12-17
 
 ## Current State
-- Working on: Initial project setup
-- Last completed: Vite + TanStack Router + Zustand + Tailwind configured
-- Next task: Implement drag-and-drop with @dnd-kit
-- Current file: `src/routes/editor/$projectId.tsx`
+- Working on: Phase 2 - Core Blocks
+- Last completed: Drag-and-drop implementation (Phase 1)
+- Next task: Create Block Definitions and Hero/Footer components
+- Current file: `src/components/editor/sidebar-item.tsx`
 
 ---
 
